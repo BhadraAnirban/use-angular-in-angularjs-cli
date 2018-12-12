@@ -14,7 +14,13 @@ and use it as a directive inside angularJs component’s html -
 <div><b>Text Consultation Component</b><app-patient></app-patient></div>
 
 Like DetailsComponent, we can use  PatientComponent, directly in the routing as well. Then we need to make it as entry component in the ngModule declaration.
+Need to import UIRouterUpgradeModule.forRoot() from '@uirouter/angular-hybrid'.
 
+imports: [
+    BrowserModule,
+    UpgradeModule,
+    UIRouterUpgradeModule.forRoot(),
+  ],
 entryComponents: [
 PatientComponent,
 DetailsComponent,
