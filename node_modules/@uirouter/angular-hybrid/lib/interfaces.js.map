@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "interfaces.js",
+  "sourceRoot": "",
+  "sources": [
+    "@uirouter/angular-hybrid/interfaces.ts"
+  ],
+  "names": [],
+  "mappings": ""
+}
