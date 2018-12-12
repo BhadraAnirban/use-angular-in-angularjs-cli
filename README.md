@@ -20,6 +20,23 @@ PatientComponent,
 DetailsComponent,
 ]
 
+#inside package.json -
+ Add dependencies of @angular/upgrade, @uirouter/angular-hybrid, angular (angular js)
+
+ "dependencies": {
+    ...
+    "@angular/router": "~7.1.0",
+    "@angular/upgrade": "^5.2.11",
+    "@uirouter/angular-hybrid": "^6.0.2",
+    "angular": "1.6.6",
+    "bootstrap": "3.3.7",
+    "core-js": "^2.5.4",
+    "jquery": "^2.2.4",
+    "lodash": "4.17.4",
+    "moment": "~2.17.1",
+    ...
+  },
+
 
 
 # Build Imformation
