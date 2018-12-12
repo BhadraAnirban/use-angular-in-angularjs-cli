@@ -1,4 +1,28 @@
-# PocFirst
+# Controller and component Instructions
+
+textConsultation is an angularJS component.
+PatientComponent, DetailsComponent, are angular 7 component.
+
+To use PatientComponent in textConsultation, we need to downgread the PatientCompoenent -
+
+.directive(
+  'appPatient',
+  downgradeComponent({ component: PatientComponent }) as angular.IDirectiveFactory
+);
+
+and use it as a directive inside angularJs component’s html -
+<div><b>Text Consultation Component</b><app-patient></app-patient></div>
+
+Like DetailsComponent, we can use  PatientComponent, directly in the routing as well. Then we need to make it as entry component in the ngModule declaration.
+
+entryComponents: [
+PatientComponent,
+DetailsComponent,
+]
+
+
+
+# Build Imformation
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
 
