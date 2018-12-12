@@ -3,18 +3,20 @@
 textConsultation is an angularJS component.
 PatientComponent, DetailsComponent, are angular 7 component.
 
-To use PatientComponent in textConsultation, we need to downgread the PatientCompoenent -
+# To use PatientComponent in textConsultation, we need to downgread the PatientCompoenent -
 
 .directive(
   'appPatient',
   downgradeComponent({ component: PatientComponent }) as angular.IDirectiveFactory
 );
 
-and use it as a directive inside angularJs component’s html -
+# and use it as a directive inside angularJs component’s html -
 <div><b>Text Consultation Component</b><app-patient></app-patient></div>
 
+# Need to import UIRouterUpgradeModule.forRoot() from '@uirouter/angular-hybrid'.
+
 Like DetailsComponent, we can use  PatientComponent, directly in the routing as well. Then we need to make it as entry component in the ngModule declaration.
-Need to import UIRouterUpgradeModule.forRoot() from '@uirouter/angular-hybrid'.
+
 
 imports: [
     BrowserModule,
@@ -26,10 +28,10 @@ PatientComponent,
 DetailsComponent,
 ]
 
-#inside package.json -
+# inside package.json -
  Add dependencies of @angular/upgrade, @uirouter/angular-hybrid, angular (angular js)
 
- "dependencies": {
+ ## "dependencies": {
     ...
     "@angular/router": "~7.1.0",
     "@angular/upgrade": "^5.2.11",
