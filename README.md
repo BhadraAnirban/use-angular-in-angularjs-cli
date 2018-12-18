@@ -85,7 +85,7 @@ DetailsComponent,
   angular
       .module('heroApp')
       .component('newonez', {
-          template: '<div><b>newoneZ = {{newoneZCtrl.title}}</b></div>',
+          template: '<span>newoneZ = {{newoneZCtrl.title}}</span>',
           controller: newoneZController,
           controllerAs: 'newoneZCtrl',
           bindings: {},
