@@ -128,7 +128,7 @@ import * as htmlFile from './newone.html';
 
 ## Use angular JS service inside angular component -
 
-Inside app.module.ts -
+### Inside app.module.ts -
 
 export function getStepsService($injector) {
   return $injector.get('StepService');
@@ -141,18 +141,18 @@ export function getStepsService($injector) {
   ],
 })
 
-Inside the angular component -
+### Inside the angular component -
 
 import { Component, OnInit, Inject } from '@angular/core';
 
-## @Component({
+ @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
 
-###  steps: [];
+  steps: [];
   constructor(@Inject('StepServiceA') public stepServiceA) {
     this.steps = stepServiceA.steps;
    }
