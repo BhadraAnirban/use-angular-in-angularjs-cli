@@ -15,6 +15,10 @@ import { RouterModule } from '@angular/router';
 
 // const routes: NgHybridStateDeclaration = {path: 'user', component: UserComponent};
 
+export function getStepsService($injector) {
+  return $injector.get('StepService');
+}
+
 
 @NgModule({
   declarations: [
@@ -32,7 +36,9 @@ import { RouterModule } from '@angular/router';
     PatientComponent,
     DetailsComponent,
   ],
-  providers: [],
+  providers: [
+    { provide: 'StepServiceA', deps: ['$injector'], useFactory: getStepsService },
+  ],
 })
 export class AppModule {
   constructor(private upgrade: UpgradeModule) { }

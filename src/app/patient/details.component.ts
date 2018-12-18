@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-details',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor() { }
+  steps: [];
+  constructor(@Inject('StepServiceA') public stepServiceA) {
+    this.steps = stepServiceA.steps;
+   }
 
   ngOnInit() {
   }

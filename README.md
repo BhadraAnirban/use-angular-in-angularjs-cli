@@ -105,3 +105,55 @@ DetailsComponent,
       };
 
 })();
+
+
+## Use html files as template, so that while build the app, correct path can be found -
+
+import * as htmlFile from './newone.html';
+
+(function () {
+  'use strict';
+
+  angular
+      .module('heroApp')
+      .component('newonez', {
+          template: htmlFile,
+          controller: newoneZController,
+          controllerAs: 'newoneZCtrl',
+          bindings: {},
+          require: {}
+      });
+      ...
+})();
+
+## Use angular JS service inside angular component -
+
+Inside app.module.ts -
+
+export function getStepsService($injector) {
+  return $injector.get('StepService');
+}
+
+@NgModule({
+  ...
+  providers: [
+    { provide: 'StepServiceA', deps: ['$injector'], useFactory: getStepsService },
+  ],
+})
+
+Inside the angular component -
+
+import { Component, OnInit, Inject } from '@angular/core';
+
+@Component({
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss']
+})
+export class DetailsComponent implements OnInit {
+
+  steps: [];
+  constructor(@Inject('StepServiceA') public stepServiceA) {
+    this.steps = stepServiceA.steps;
+   }
+}

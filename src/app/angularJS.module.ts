@@ -34,6 +34,10 @@ export const angularJSModule = angular.module('heroApp', [uiRouter,upgradeModule
 );
 
 
+
+
+
+
 const routerConfig = ['$urlRouterProvider', '$locationProvider', '$urlMatcherFactoryProvider', '$stateProvider', ($urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider, $stateProvider) => {
   $urlMatcherFactoryProvider.strictMode(false);
   $locationProvider.html5Mode(true);
