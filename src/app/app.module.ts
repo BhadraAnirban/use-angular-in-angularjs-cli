@@ -9,9 +9,11 @@ import { angularJSModule } from './angularJS.module';
 
 import { PatientComponent } from './patient/patient.component';
 import { DetailsComponent } from './patient/details.component';
-import { UIRouterUpgradeModule } from '@uirouter/angular-hybrid';
+import { UIRouterUpgradeModule, NgHybridStateDeclaration } from '@uirouter/angular-hybrid';
+import { UserComponent } from './user/user.component';
+import { RouterModule } from '@angular/router';
 
-
+// const routes: NgHybridStateDeclaration = {path: 'user', component: UserComponent};
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { UIRouterUpgradeModule } from '@uirouter/angular-hybrid';
     AppComponent,
     PatientComponent,
     DetailsComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
