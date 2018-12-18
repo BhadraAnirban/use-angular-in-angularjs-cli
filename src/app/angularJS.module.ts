@@ -9,7 +9,7 @@ import { DetailsComponent } from './patient/details.component';
 export const angularJSModule = angular.module('heroApp', [uiRouter,upgradeModule.name])
 .controller('MainCtrl', function() {
   this.message = 'Hello world PMKJ';
-})
+}) 
 .component('textConsultation', {
   template: '<div><b>Text Consultation Component</b><app-patient></app-patient></div>',
   controllerAs: 'txtCnsltn',

@@ -1,34 +1,4 @@
-# Controller and component Instructions
-
-textConsultation is an angularJS component.
-PatientComponent, DetailsComponent, are angular 7 component.
-
-# To use PatientComponent in textConsultation, we need to downgread the PatientCompoenent -
-
-.directive(
-  'appPatient',
-  downgradeComponent({ component: PatientComponent }) as angular.IDirectiveFactory
-);
-
-# and use it as a directive inside angularJs component’s html -
-<div><b>Text Consultation Component</b><app-patient></app-patient></div>
-
-# Need to import UIRouterUpgradeModule.forRoot() from '@uirouter/angular-hybrid'.
-
-Like DetailsComponent, we can use  PatientComponent, directly in the routing as well. Then we need to make it as entry component in the ngModule declaration.
-
-
-imports: [
-    BrowserModule,
-    UpgradeModule,
-    UIRouterUpgradeModule.forRoot(),
-  ],
-entryComponents: [
-PatientComponent,
-DetailsComponent,
-]
-
-# inside package.json -
+## Inside package.json -
  Add dependencies of @angular/upgrade, @uirouter/angular-hybrid, angular (angular js)
 
  ## "dependencies": {
@@ -45,32 +15,93 @@ DetailsComponent,
     ...
   },
 
+## In app.module.ts, Need to import UIRouterUpgradeModule.forRoot() from '@uirouter/angular-hybrid'.
+
+## Give reference of all .js files to the module, in main.ts
+
+In the main.ts file mention below code to Import all the js files
+
+declare const require: any;
+const context = require.context('./app', true, /\.js$/);
+context.keys().forEach((file: any) => {
+    try {
+        context(file);
+    } catch (err) {
+        console.log(err, file);
+    }
+});
 
 
-# Build Imformation
+## Controller and component Instructions
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
+textConsultation, newonez are an angularJS component.
+PatientComponent is angular 7 component.
 
-## Development server
+## To use PatientComponent in textConsultation, we need to downgread the PatientCompoenent -
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+export const angularJSModule = angular.module('heroApp', [uiRouter,upgradeModule.name])
+.controller('MainCtrl', function() {
+  this.message = 'Hello world PMKJ';
+})
+.component('textConsultation', {
+  template: '<div><newonez></newonez><b>Text Consultation Component</b><app-patient></app-patient></div>',
+  controllerAs: 'txtCnsltn',
+  bindings: {
+    patient: '=?',
+    tab: '@',
+  }
+})
+.directive(
+  'appPatient',
+  downgradeComponent({ component: PatientComponent }) as angular.IDirectiveFactory
+);
 
-## Code scaffolding
+## and use it as a directive inside angularJs component’s html -
+<div><b>Text Consultation Component</b><app-patient></app-patient></div>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Like DetailsComponent, we can use  PatientComponent, directly in the routing as well. Then we need to make it as entry component in the ngModule declaration.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+imports: [
+    BrowserModule,
+    UpgradeModule,
+    UIRouterUpgradeModule.forRoot(),
+  ],
+entryComponents: [
+PatientComponent,
+DetailsComponent,
+]
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## In the old js component file, inject the DI -
+
+(function () {
+  'use strict';
+
+  angular
+      .module('heroApp')
+      .component('newonez', {
+          template: '<div><b>newoneZ = {{newoneZCtrl.title}}</b></div>',
+          controller: newoneZController,
+          controllerAs: 'newoneZCtrl',
+          bindings: {},
+          require: {}
+      });
+
+
+    ##  newoneZController.$inject = ['$scope', '$stateParams'];
+    // Need to inject the dependency in component / controller using $inject
+
+      function newoneZController($scope, $stateParams){
+        var _this = this;
+        _this.init = function(){
+          _this.title = 'PMKJ ' + $stateParams.id;
+        };
+        _this.init();
+      };
+
+})();
