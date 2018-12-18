@@ -144,15 +144,15 @@ export function getStepsService($injector) {
 Inside the angular component -
 
 import { Component, OnInit, Inject } from '@angular/core';
-##
-@Component({
+
+## @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-##
-  steps: [];
+
+###  steps: [];
   constructor(@Inject('StepServiceA') public stepServiceA) {
     this.steps = stepServiceA.steps;
    }
